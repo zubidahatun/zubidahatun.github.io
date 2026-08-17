@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Use the IGVIO Instagram Profile Viewer to search for available Instagram profile information by username.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://igvio.live/instagram-profile-viewer.html">
+  <title>Instagram Profile Viewer – Search Profiles | IGVIO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html" aria-label="IGVIO home"><span class="brand-mark">I</span><span>IGVIO</span></a>
+    <nav class="nav" style="display:flex" aria-label="Main navigation">
+      <a href="index.html">Home</a><a href="index.html#how-it-works">How It Works</a><a href="index.html#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero viewer-hero">
+    <div class="container narrow" style="text-align:center; position:relative; z-index:2">
+      <span class="section-label">INSTAGRAM PROFILE VIEWER</span>
+      <h1>Instagram Profile Viewer</h1>
+      <p class="hero-text" style="margin-left:auto;margin-right:auto">
+        Search an Instagram username to find available profile information and public content.
+      </p>
+      <form class="search-card" id="viewerForm" style="margin:30px auto 0;text-align:left">
+        <label for="username">Instagram username</label>
+        <div class="input-row">
+          <div class="input-wrap">
+            <span class="at">@</span>
+            <input id="username" type="text" inputmode="text" autocomplete="off"
+              placeholder="Enter username" maxlength="30" required>
+          </div>
+          <button type="submit" class="primary-btn">Search Profile <span>→</span></button>
+        </div>
+        <p class="form-note">Use a username only. Never enter an Instagram password.</p>
+      </form>
+      <p id="viewerMessage" class="form-note" style="margin-top:16px;text-align:center"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container narrow">
+      <span class="section-label">ABOUT THE VIEWER</span>
+      <h2>Search profiles by username</h2>
+      <p>
+        IGVIO provides a focused interface for searching Instagram usernames and
+        reviewing information that is available to the viewer. Availability can vary by
+        account, username, platform restrictions, and other factors.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-bottom" style="margin-top:0">
+    <span>© <span id="year"></span> IGVIO. All rights reserved.</span>
+    <a href="index.html">Back to Home</a>
+  </div>
+</footer>
+<script>
+const form = document.getElementById("viewerForm");
+const input = document.getElementById("username");
+const message = document.getElementById("viewerMessage");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const value = input.value.trim().replace(/^@+/, "");
+  if (!/^[A-Za-z0-9._]{1,30}$/.test(value)) {
+    message.textContent = "Please enter a valid Instagram username.";
+    return;
+  }
+  message.textContent = "Profile search is ready to be connected to your viewer backend.";
+});
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
