@@ -3,79 +3,604 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Use the IGVIO Instagram Profile Viewer to search for available Instagram profile information by username.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://igvio.live/instagram-profile-viewer.html">
+
   <title>Instagram Profile Viewer – Search Profiles | IGVIO</title>
+
+  <meta name="description" content="Use the IGVIO Instagram Profile Viewer to search Instagram usernames and explore available profile information and public content.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#111827">
+
+  <link rel="canonical" href="https://igvio.live/instagram-profile-viewer.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Instagram Profile Viewer – Search Profiles | IGVIO">
+  <meta property="og:description" content="Search Instagram usernames with IGVIO and explore available profile information and public content.">
+  <meta property="og:url" content="https://igvio.live/instagram-profile-viewer.html">
+  <meta property="og:site_name" content="IGVIO">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a class="brand" href="index.html" aria-label="IGVIO home"><span class="brand-mark">I</span><span>IGVIO</span></a>
-    <nav class="nav" style="display:flex" aria-label="Main navigation">
-      <a href="index.html">Home</a><a href="index.html#how-it-works">How It Works</a><a href="index.html#faq">FAQ</a>
-    </nav>
-  </div>
-</header>
 
-<main>
-  <section class="hero viewer-hero">
-    <div class="container narrow" style="text-align:center; position:relative; z-index:2">
-      <span class="section-label">INSTAGRAM PROFILE VIEWER</span>
-      <h1>Instagram Profile Viewer</h1>
-      <p class="hero-text" style="margin-left:auto;margin-right:auto">
-        Search an Instagram username to find available profile information and public content.
-      </p>
-      <form class="search-card" id="viewerForm" style="margin:30px auto 0;text-align:left">
-        <label for="username">Instagram username</label>
-        <div class="input-row">
-          <div class="input-wrap">
-            <span class="at">@</span>
-            <input id="username" type="text" inputmode="text" autocomplete="off"
-              placeholder="Enter username" maxlength="30" required>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+
+      <a class="brand" href="index.html" aria-label="IGVIO Home">
+        <span class="brand-mark">I</span>
+        <span>IGVIO</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="mainNav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#blog">Blog</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- VIEWER HERO -->
+    <section class="hero viewer-hero">
+
+      <div class="hero-glow glow-one"></div>
+      <div class="hero-glow glow-two"></div>
+
+      <div
+        class="container narrow viewer-content"
+        style="text-align:center; position:relative; z-index:2;">
+
+        <span class="section-label">
+          INSTAGRAM PROFILE VIEWER
+        </span>
+
+        <h1>Instagram Profile Viewer</h1>
+
+        <p class="hero-text viewer-description">
+          Search an Instagram username to explore available profile
+          information and public content through a simple interface.
+        </p>
+
+
+        <!-- SEARCH CARD -->
+        <form
+          class="search-card"
+          id="viewerForm"
+          novalidate
+          aria-label="Instagram profile search">
+
+          <label for="username">
+            Instagram username
+          </label>
+
+          <div class="input-row">
+
+            <div class="input-wrap">
+
+              <span class="at" aria-hidden="true">@</span>
+
+              <input
+                id="username"
+                name="username"
+                type="text"
+                inputmode="text"
+                autocomplete="off"
+                autocapitalize="none"
+                spellcheck="false"
+                placeholder="Enter username"
+                maxlength="30"
+                aria-describedby="formNote"
+                required>
+
+            </div>
+
+            <button
+              type="submit"
+              class="primary-btn"
+              id="searchButton">
+              Search Profile <span aria-hidden="true">→</span>
+            </button>
+
           </div>
-          <button type="submit" class="primary-btn">Search Profile <span>→</span></button>
+
+          <p class="form-note" id="formNote">
+            Enter a username only. Never enter an Instagram password.
+          </p>
+
+        </form>
+
+
+        <!-- STATUS -->
+        <div
+          class="viewer-status"
+          id="viewerStatus"
+          role="status"
+          aria-live="polite"
+          hidden>
         </div>
-        <p class="form-note">Use a username only. Never enter an Instagram password.</p>
-      </form>
-      <p id="viewerMessage" class="form-note" style="margin-top:16px;text-align:center"></p>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="container narrow">
-      <span class="section-label">ABOUT THE VIEWER</span>
-      <h2>Search profiles by username</h2>
-      <p>
-        IGVIO provides a focused interface for searching Instagram usernames and
-        reviewing information that is available to the viewer. Availability can vary by
-        account, username, platform restrictions, and other factors.
-      </p>
-    </div>
-  </section>
-</main>
+      </div>
+    </section>
 
-<footer class="site-footer">
-  <div class="container footer-bottom" style="margin-top:0">
-    <span>© <span id="year"></span> IGVIO. All rights reserved.</span>
-    <a href="index.html">Back to Home</a>
-  </div>
-</footer>
-<script>
-const form = document.getElementById("viewerForm");
-const input = document.getElementById("username");
-const message = document.getElementById("viewerMessage");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const value = input.value.trim().replace(/^@+/, "");
-  if (!/^[A-Za-z0-9._]{1,30}$/.test(value)) {
-    message.textContent = "Please enter a valid Instagram username.";
-    return;
-  }
-  message.textContent = "Profile search is ready to be connected to your viewer backend.";
-});
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+
+    <!-- HOW TO USE -->
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-heading centered">
+
+          <span class="section-label">
+            HOW TO USE
+          </span>
+
+          <h2>Search an Instagram profile in three steps</h2>
+
+          <p>
+            Getting started with the IGVIO profile viewer is simple.
+          </p>
+
+        </div>
+
+
+        <div class="steps">
+
+          <article class="step-card">
+
+            <span class="step-number">01</span>
+
+            <div class="icon-box">⌕</div>
+
+            <h3>Enter a username</h3>
+
+            <p>
+              Type the Instagram username you want to search for.
+            </p>
+
+          </article>
+
+
+          <article class="step-card">
+
+            <span class="step-number">02</span>
+
+            <div class="icon-box">→</div>
+
+            <h3>Start the search</h3>
+
+            <p>
+              Submit the username using the search button.
+            </p>
+
+          </article>
+
+
+          <article class="step-card">
+
+            <span class="step-number">03</span>
+
+            <div class="icon-box">✓</div>
+
+            <h3>Review available information</h3>
+
+            <p>
+              Explore profile information and public content that is available
+              to the viewer.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT VIEWER -->
+    <section class="section feature-section">
+
+      <div class="container narrow">
+
+        <div class="section-heading centered">
+
+          <span class="section-label">
+            ABOUT THE VIEWER
+          </span>
+
+          <h2>What is the IGVIO Instagram Profile Viewer?</h2>
+
+        </div>
+
+
+        <div class="viewer-article">
+
+          <p>
+            The IGVIO Instagram Profile Viewer is a simple username-based
+            interface designed to help users search for Instagram profiles and
+            explore information that may be available for an account.
+          </p>
+
+          <p>
+            Instead of navigating through multiple pages, users can enter an
+            Instagram username and start their search directly from the viewer.
+            The information available may vary depending on the account,
+            username, platform restrictions, and other factors.
+          </p>
+
+
+          <h3>What information may be available?</h3>
+
+          <p>
+            Depending on the profile and available data, results may include
+            basic profile information or other publicly available details.
+            Results are not guaranteed for every username.
+          </p>
+
+
+          <h3>Why might a profile not appear?</h3>
+
+          <p>
+            A profile may be unavailable if the username is incorrect, the
+            account has changed its username, the account has been deleted or
+            disabled, or the requested information cannot be retrieved.
+          </p>
+
+
+          <h3>Do I need an Instagram password?</h3>
+
+          <p>
+            No. IGVIO does not ask users to provide an Instagram password.
+            Never submit passwords, authentication codes, or other confidential
+            account credentials to a third-party viewer.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRIVACY NOTICE -->
+    <section class="section">
+
+      <div class="container">
+
+        <div class="guide-box">
+
+          <div>
+
+            <span class="section-label">
+              PRIVACY & SAFETY
+            </span>
+
+            <h2>Use profile viewers responsibly</h2>
+
+            <p>
+              Instagram privacy settings are controlled by Instagram and
+              individual account owners. IGVIO does not encourage unauthorized
+              access or attempts to bypass privacy controls.
+            </p>
+
+          </div>
+
+          <a
+            class="secondary-btn"
+            href="privacy.html">
+            Privacy Policy <span>→</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="section faq-section">
+
+      <div class="container narrow">
+
+        <div class="section-heading centered">
+
+          <span class="section-label">
+            VIEWER FAQ
+          </span>
+
+          <h2>Frequently asked questions</h2>
+
+        </div>
+
+
+        <div class="faq-list">
+
+          <details>
+            <summary>What is an Instagram Profile Viewer?</summary>
+
+            <p>
+              An Instagram Profile Viewer is a tool or interface that helps
+              users search for Instagram usernames and explore information that
+              may be available for those profiles.
+            </p>
+
+          </details>
+
+
+          <details>
+            <summary>Do I need an Instagram account?</summary>
+
+            <p>
+              IGVIO's viewer interface is designed around username searches.
+              Availability of profile information may depend on the account
+              and platform restrictions.
+            </p>
+
+          </details>
+
+
+          <details>
+            <summary>Can IGVIO access private Instagram posts?</summary>
+
+            <p>
+              Private content is controlled by Instagram's privacy settings.
+              IGVIO does not claim to bypass Instagram privacy controls or
+              provide unauthorized access to restricted content.
+            </p>
+
+          </details>
+
+
+          <details>
+            <summary>Why can't I find a username?</summary>
+
+            <p>
+              The username may be incorrect, changed, unavailable, deleted,
+              disabled, or the requested information may not be accessible.
+            </p>
+
+          </details>
+
+
+          <details>
+            <summary>Is my Instagram password required?</summary>
+
+            <p>
+              No. Never enter an Instagram password or authentication code
+              into a third-party profile viewer.
+            </p>
+
+          </details>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL CTA -->
+    <section class="cta-section">
+
+      <div class="container cta-box">
+
+        <div>
+
+          <span class="section-label">
+            IGVIO
+          </span>
+
+          <h2>Ready to search an Instagram profile?</h2>
+
+          <p>
+            Enter a username above and explore available profile information.
+          </p>
+
+        </div>
+
+        <a
+          href="#viewerForm"
+          class="primary-btn">
+          Search Profile <span>↑</span>
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="container footer-grid">
+
+      <div>
+
+        <a class="brand footer-brand" href="index.html">
+          <span class="brand-mark">I</span>
+          <span>IGVIO</span>
+        </a>
+
+        <p class="footer-text">
+          A simple Instagram profile viewer for exploring available profile
+          information and public content.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>Explore</h3>
+
+        <a href="index.html">Home</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#blog">Blog</a>
+
+      </div>
+
+
+      <div>
+
+        <h3>Legal</h3>
+
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <span>
+        © <span id="year"></span> IGVIO. All rights reserved.
+      </span>
+
+      <span>
+        IGVIO is an independent website and is not affiliated with Instagram.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+    const form = document.getElementById("viewerForm");
+    const input = document.getElementById("username");
+    const message = document.getElementById("viewerStatus");
+    const searchButton = document.getElementById("searchButton");
+
+    form.addEventListener("submit", function (event) {
+
+      event.preventDefault();
+
+      const username = input.value
+        .trim()
+        .replace(/^@+/, "");
+
+      if (!/^[A-Za-z0-9._]{1,30}$/.test(username)) {
+
+        message.hidden = false;
+
+        message.textContent =
+          "Please enter a valid Instagram username.";
+
+        input.focus();
+
+        return;
+      }
+
+      message.hidden = false;
+
+      message.textContent =
+        "Searching for @" + username + "...";
+
+      searchButton.disabled = true;
+
+      /*
+        Connect your real viewer/backend here.
+
+        Example:
+        fetch("/api/search?username=" + encodeURIComponent(username))
+
+        The page intentionally does not create fake profile results.
+      */
+
+      setTimeout(function () {
+
+        message.textContent =
+          "Profile search is ready to be connected to the viewer backend.";
+
+        searchButton.disabled = false;
+
+      }, 700);
+
+    });
+
+
+    /* Mobile Navigation */
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const mainNav =
+      document.getElementById("mainNav");
+
+    if (menuToggle && mainNav) {
+
+      menuToggle.addEventListener("click", function () {
+
+        const isOpen =
+          mainNav.classList.toggle("active");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          isOpen ? "true" : "false"
+        );
+
+      });
+
+      mainNav.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+          mainNav.classList.remove("active");
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        });
+
+      });
+
+    }
+
+
+    /* Current Year */
+
+    const yearElement =
+      document.getElementById("year");
+
+    if (yearElement) {
+      yearElement.textContent =
+        new Date().getFullYear();
+    }
+  </script>
+
 </body>
 </html>
