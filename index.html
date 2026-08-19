@@ -13,6 +13,8 @@
   <meta property="og:description" content="Explore Instagram profiles with IGVIO. Search by username to find available profile details and public Instagram content online.">
   <meta property="og:url" content="https://igvio.live/">
   <meta property="og:site_name" content="IGVIO">
+  <link rel="icon" type="image/png" href="/igvio.png">
+  <link rel="apple-touch-icon" href="/igvio.png">
 
   <title>Private Instagram Viewer – Explore Instagram Profiles | IGVIO</title>
 
@@ -22,22 +24,111 @@
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"IGVIO",
-    "url":"https://igvio.live/",
-    "description":"Private Instagram Viewer for exploring available Instagram profile information and public content."
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"IGVIO",
-    "url":"https://igvio.live/"
-  }
-  </script>
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://igvio.live/#website",
+      "name": "IGVIO",
+      "url": "https://igvio.live/",
+      "description": "IGVIO is an Instagram profile viewer for searching usernames and exploring available Instagram profile information and public content.",
+      "publisher": {
+        "@id": "https://igvio.live/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://igvio.live/#organization",
+      "name": "IGVIO",
+      "url": "https://igvio.live/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://igvio.live/igvio.png"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://igvio.live/#webpage",
+      "url": "https://igvio.live/",
+      "name": "Private Instagram Viewer – Explore Instagram Profiles | IGVIO",
+      "description": "Explore Instagram profiles with IGVIO. Search by username to find available profile information and public Instagram content online.",
+      "isPartOf": {
+        "@id": "https://igvio.live/#website"
+      },
+      "about": {
+        "@id": "https://igvio.live/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://igvio.live/#blog",
+      "name": "IGVIO Blog",
+      "url": "https://igvio.live/#blog",
+      "description": "Guides, tutorials, and helpful information about Instagram profile viewers, profile visibility, and Instagram-related topics.",
+      "isPartOf": {
+        "@id": "https://igvio.live/#website"
+      },
+      "publisher": {
+        "@id": "https://igvio.live/#organization"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://igvio.live/#faq",
+      "url": "https://igvio.live/#faq",
+      "isPartOf": {
+        "@id": "https://igvio.live/#website"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an Instagram viewer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An Instagram viewer is a tool that helps users search for and explore available information associated with Instagram profiles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an Instagram password to use IGVIO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. IGVIO does not ask users to enter an Instagram password. Users can use the username search feature to begin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can IGVIO access private Instagram posts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Private Instagram content is controlled by Instagram's privacy settings. IGVIO does not claim to bypass Instagram privacy controls or provide unauthorized access to restricted content."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't some Instagram profiles be found?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A profile may be unavailable because the username is incorrect, the account has changed its username, the account is unavailable, or the requested information cannot be retrieved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does IGVIO work on mobile devices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. IGVIO uses a responsive design intended to work across phones, tablets, laptops, and desktop devices."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <header class="site-header">
