@@ -6,38 +6,63 @@
 
   <title>Confirm Username | IGVIO</title>
 
-  <meta name="description"
-        content="Confirm your Instagram username before continuing with IGVIO.">
-
+  <meta name="description" content="Confirm your Instagram username before continuing with IGVIO.">
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#111827">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://igvio.live/confirm.html">
 
   <style>
+    /* ================================
+       CONFIRM PAGE
+    ================================= */
+
     .confirm-page {
-      min-height: calc(100vh - 80px);
+      min-height: calc(100vh - 76px);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 70px 20px;
-      background: #f8fafc;
+      padding: 55px 20px 70px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(99, 102, 241, 0.08),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 85% 80%,
+          rgba(139, 92, 246, 0.07),
+          transparent 30%
+        ),
+        #f8fafc;
+    }
+
+    .confirm-wrapper {
+      width: 100%;
+      max-width: 570px;
+      margin: 0 auto;
     }
 
     .confirm-card {
       width: 100%;
-      max-width: 560px;
-      background: #fff;
+      box-sizing: border-box;
+      padding: 42px 40px;
+      background: #ffffff;
       border: 1px solid #e5e7eb;
       border-radius: 24px;
-      padding: 42px 32px;
+      box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.08),
+        0 3px 10px rgba(15, 23, 42, 0.03);
       text-align: center;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, .08);
     }
 
+    /* Icon */
+
     .confirm-icon {
-      width: 72px;
-      height: 72px;
+      width: 68px;
+      height: 68px;
       margin: 0 auto 22px;
       display: flex;
       align-items: center;
@@ -45,33 +70,47 @@
       border-radius: 50%;
       background: #eef2ff;
       color: #4f46e5;
-      font-size: 30px;
+      font-size: 27px;
       font-weight: 800;
     }
 
+    /* Heading */
+
     .confirm-card h1 {
-      margin: 0 0 12px;
-      font-size: 32px;
+      margin: 10px 0 12px;
       color: #111827;
+      font-size: clamp(27px, 5vw, 35px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
     }
 
-    .confirm-card > p {
+    .confirm-description {
+      max-width: 450px;
+      margin: 0 auto;
       color: #64748b;
+      font-size: 15px;
       line-height: 1.7;
     }
 
+    /* Username */
+
     .username-box {
-      margin: 28px 0;
-      padding: 20px;
-      border-radius: 16px;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 27px 0 25px;
+      padding: 19px 18px;
       background: #f8fafc;
       border: 1px solid #e2e8f0;
+      border-radius: 15px;
     }
 
     .username-box strong {
       display: block;
-      font-size: 25px;
       color: #111827;
+      font-size: clamp(20px, 4vw, 25px);
+      line-height: 1.35;
+      font-weight: 800;
+      overflow-wrap: anywhere;
       word-break: break-word;
     }
 
@@ -79,35 +118,63 @@
       display: block;
       margin-top: 6px;
       color: #94a3b8;
-      font-size: 13px;
+      font-size: 12px;
+      line-height: 1.4;
     }
 
+    /* Buttons */
+
     .confirm-actions {
+      width: 100%;
       display: flex;
       gap: 12px;
+      align-items: stretch;
       justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 25px;
     }
 
     .confirm-actions a,
     .confirm-actions button {
-      min-width: 150px;
+      flex: 1;
+      min-width: 0;
+      min-height: 50px;
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      cursor: pointer;
-      border: 0;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
       text-decoration: none;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .confirm-actions a:hover,
+    .confirm-actions button:hover {
+      transform: translateY(-1px);
+    }
+
+    .confirm-actions button {
+      border: 0;
     }
 
     .back-btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 13px 22px;
-      border-radius: 12px;
       background: #f1f5f9;
       color: #334155;
-      font-weight: 700;
+      border: 1px solid #e2e8f0;
     }
+
+    .back-btn:hover {
+      background: #e2e8f0;
+    }
+
+    /* Process */
 
     .process-screen {
       display: none;
@@ -118,20 +185,43 @@
     }
 
     .process-spinner {
-      width: 64px;
-      height: 64px;
+      width: 62px;
+      height: 62px;
       margin: 0 auto 25px;
-      border: 5px solid #e2e8f0;
+      box-sizing: border-box;
+      border: 5px solid #e5e7eb;
       border-top-color: #4f46e5;
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      animation: igvioSpin 0.9s linear infinite;
+    }
+
+    .process-description {
+      max-width: 430px;
+      margin: 0 auto;
+      color: #64748b;
+      font-size: 15px;
+      line-height: 1.7;
     }
 
     .process-status {
-      margin-top: 25px;
-      color: #64748b;
-      min-height: 24px;
+      min-height: 22px;
+      margin-top: 22px;
+      color: #4f46e5;
+      font-size: 14px;
+      font-weight: 600;
     }
+
+    @keyframes igvioSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Result */
 
     .result-screen {
       display: none;
@@ -142,36 +232,113 @@
     }
 
     .result-icon {
-      font-size: 54px;
-      margin-bottom: 15px;
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #ecfdf5;
+      color: #059669;
+      font-size: 30px;
+      font-weight: 800;
     }
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+    .result-description {
+      max-width: 440px;
+      margin: 0 auto 26px;
+      color: #64748b;
+      font-size: 15px;
+      line-height: 1.7;
     }
+
+    /* Small screens */
 
     @media (max-width: 600px) {
+
+      .confirm-page {
+        min-height: calc(100vh - 68px);
+        padding: 28px 14px 45px;
+      }
+
+      .confirm-wrapper {
+        max-width: 100%;
+      }
+
       .confirm-card {
         padding: 32px 20px;
+        border-radius: 20px;
+      }
+
+      .confirm-icon,
+      .result-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 18px;
       }
 
       .confirm-card h1 {
-        font-size: 27px;
+        margin-top: 8px;
       }
 
-      .username-box strong {
-        font-size: 21px;
+      .confirm-description {
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .username-box {
+        margin: 23px 0 20px;
+        padding: 17px 14px;
       }
 
       .confirm-actions {
         flex-direction: column;
+        gap: 10px;
       }
 
       .confirm-actions a,
       .confirm-actions button {
         width: 100%;
+        flex: none;
+        min-height: 50px;
+      }
+    }
+
+    /* Very small phones */
+
+    @media (max-width: 360px) {
+
+      .confirm-page {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .confirm-card {
+        padding: 28px 16px;
+        border-radius: 18px;
+      }
+
+      .confirm-card h1 {
+        font-size: 25px;
+      }
+
+      .username-box strong {
+        font-size: 19px;
+      }
+    }
+
+    /* Reduced motion accessibility */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .process-spinner {
+        animation: none;
+      }
+
+      .confirm-actions a,
+      .confirm-actions button {
+        transition: none;
       }
     }
   </style>
@@ -187,8 +354,21 @@
       <span>IGVIO</span>
     </a>
 
-    <nav class="nav" style="display:flex" aria-label="Main navigation">
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
       <a href="index.html">Home</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#features">Features</a>
       <a href="index.html#faq">FAQ</a>
       <a href="index.html#blog">Blog</a>
     </nav>
@@ -201,101 +381,111 @@
 
   <section class="confirm-page">
 
-    <div class="confirm-card">
+    <div class="confirm-wrapper">
 
-      <!-- CONFIRMATION -->
-      <div id="confirmScreen">
+      <div class="confirm-card">
 
-        <div class="confirm-icon">?</div>
+        <!-- CONFIRMATION SCREEN -->
 
-        <span class="section-label">CONFIRM USERNAME</span>
+        <div id="confirmScreen">
 
-        <h1>Is this correct?</h1>
+          <div class="confirm-icon">?</div>
 
-        <p>
-          Please confirm that the Instagram username below is the one
-          you want to continue with.
-        </p>
+          <span class="section-label">
+            CONFIRM USERNAME
+          </span>
 
-        <div class="username-box">
-          <strong id="displayUsername">@username</strong>
-          <span>Instagram username</span>
+          <h1>Is this correct?</h1>
+
+          <p class="confirm-description">
+            Please check the Instagram username below before
+            continuing.
+          </p>
+
+          <div class="username-box">
+            <strong id="displayUsername">@username</strong>
+            <span>Instagram username</span>
+          </div>
+
+          <div class="confirm-actions">
+
+            <a
+              href="instagram-profile-viewer.html"
+              class="back-btn">
+              ← Go Back
+            </a>
+
+            <button
+              type="button"
+              class="primary-btn"
+              id="correctButton">
+              Correct <span>→</span>
+            </button>
+
+          </div>
+
         </div>
 
-        <div class="confirm-actions">
 
-          <a
-            href="instagram-profile-viewer.html"
-            class="back-btn">
-            ← Go Back
-          </a>
+        <!-- PROCESS SCREEN -->
 
-          <button
-            type="button"
-            class="primary-btn"
-            id="correctButton">
-            Correct <span>→</span>
-          </button>
+        <div id="processScreen" class="process-screen">
+
+          <div class="process-spinner"></div>
+
+          <span class="section-label">
+            PROCESSING
+          </span>
+
+          <h1>Processing Profile</h1>
+
+          <p class="process-description">
+            Please wait while the requested profile process
+            is being completed.
+          </p>
+
+          <div
+            class="process-status"
+            id="processStatus">
+            Preparing request...
+          </div>
 
         </div>
 
-      </div>
 
+        <!-- RESULT SCREEN -->
 
-      <!-- SIMULATED PROCESS -->
-      <div id="processScreen" class="process-screen">
+        <div id="resultScreen" class="result-screen">
 
-        <div class="process-spinner"></div>
+          <div class="result-icon">✓</div>
 
-        <span class="section-label">
-          PLEASE WAIT
-        </span>
+          <span class="section-label">
+            COMPLETE
+          </span>
 
-        <h1>Processing Profile</h1>
+          <h1>Process Complete</h1>
 
-        <p>
-          IGVIO is processing the requested username.
-        </p>
+          <p class="result-description">
+            The simulated profile process for
+            <strong id="resultUsername"></strong>
+            has finished.
+          </p>
 
-        <div
-          class="process-status"
-          id="processStatus">
-          Initializing...
-        </div>
+          <div class="confirm-actions">
 
-      </div>
+            <a
+              href="instagram-profile-viewer.html"
+              class="primary-btn">
+              Search Another <span>→</span>
+            </a>
 
+            <a
+              href="index.html"
+              class="back-btn">
+              Home
+            </a>
 
-      <!-- RESULT -->
-      <div id="resultScreen" class="result-screen">
-
-        <div class="result-icon">✓</div>
-
-        <span class="section-label">
-          PROCESS COMPLETE
-        </span>
-
-        <h1>Processing Finished</h1>
-
-        <p>
-          The simulated profile-viewer process for
-          <strong id="resultUsername"></strong>
-          has completed.
-        </p>
-
-        <div class="confirm-actions">
-
-          <a
-            href="instagram-profile-viewer.html"
-            class="primary-btn">
-            Search Another <span>→</span>
-          </a>
-
-          <a
-            href="index.html"
-            class="back-btn">
-            Home
-          </a>
+          </div>
 
         </div>
 
@@ -309,8 +499,23 @@
 
 
 <script>
+  /* ================================
+     GET USERNAME
+  ================================= */
+
   const params = new URLSearchParams(window.location.search);
   const username = params.get("username");
+
+  const usernamePattern = /^[A-Za-z0-9._]{1,30}$/;
+
+  if (!username || !usernamePattern.test(username)) {
+    window.location.replace("instagram-profile-viewer.html");
+  }
+
+
+  /* ================================
+     ELEMENTS
+  ================================= */
 
   const displayUsername =
     document.getElementById("displayUsername");
@@ -334,33 +539,33 @@
     document.getElementById("processStatus");
 
 
-  // Validate username
-  if (
-    !username ||
-    !/^[A-Za-z0-9._]{1,30}$/.test(username)
-  ) {
-    window.location.href =
-      "instagram-profile-viewer.html";
-  }
+  /* ================================
+     DISPLAY USERNAME
+  ================================= */
+
+  const formattedUsername = "@" + username;
+
+  displayUsername.textContent = formattedUsername;
+  resultUsername.textContent = formattedUsername;
 
 
-  // Display username
-  displayUsername.textContent = "@" + username;
-  resultUsername.textContent = "@" + username;
+  /* ================================
+     CORRECT BUTTON
+  ================================= */
 
-
-  // Correct button
   correctButton.addEventListener("click", function () {
 
     confirmScreen.style.display = "none";
     processScreen.classList.add("active");
 
+    correctButton.disabled = true;
+
     const messages = [
-      "Preparing profile request...",
+      "Preparing request...",
       "Checking submitted username...",
-      "Processing available profile data...",
-      "Analyzing available information...",
-      "Finalizing the request..."
+      "Processing available information...",
+      "Analyzing profile data...",
+      "Finalizing process..."
     ];
 
     let step = 0;
@@ -378,7 +583,11 @@
     }, 3000);
 
 
-    // 15-second simulated process
+    /*
+      Simulated 15-second process.
+      No countdown is displayed to the user.
+    */
+
     setTimeout(function () {
 
       clearInterval(statusInterval);
@@ -389,6 +598,48 @@
     }, 15000);
 
   });
+
+
+  /* ================================
+     MOBILE MENU
+  ================================= */
+
+  const menuToggle =
+    document.getElementById("menuToggle");
+
+  const mainNav =
+    document.getElementById("mainNav");
+
+  if (menuToggle && mainNav) {
+
+    menuToggle.addEventListener("click", function () {
+
+      const isOpen =
+        mainNav.classList.toggle("active");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+    });
+
+    mainNav.querySelectorAll("a").forEach(function (link) {
+
+      link.addEventListener("click", function () {
+
+        mainNav.classList.remove("active");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+    });
+
+  }
 </script>
 
 </body>
