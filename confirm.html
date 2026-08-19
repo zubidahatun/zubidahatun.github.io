@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Confirm Username | IGVIO</title>
+
+  <meta name="description"
+        content="Confirm your Instagram username before continuing with IGVIO.">
+
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#111827">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .confirm-page {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 70px 20px;
+      background: #f8fafc;
+    }
+
+    .confirm-card {
+      width: 100%;
+      max-width: 560px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 24px;
+      padding: 42px 32px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, .08);
+    }
+
+    .confirm-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #eef2ff;
+      color: #4f46e5;
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .confirm-card h1 {
+      margin: 0 0 12px;
+      font-size: 32px;
+      color: #111827;
+    }
+
+    .confirm-card > p {
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .username-box {
+      margin: 28px 0;
+      padding: 20px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    .username-box strong {
+      display: block;
+      font-size: 25px;
+      color: #111827;
+      word-break: break-word;
+    }
+
+    .username-box span {
+      display: block;
+      margin-top: 6px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .confirm-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .confirm-actions a,
+    .confirm-actions button {
+      min-width: 150px;
+      justify-content: center;
+      cursor: pointer;
+      border: 0;
+      text-decoration: none;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 13px 22px;
+      border-radius: 12px;
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+    }
+
+    .process-screen {
+      display: none;
+    }
+
+    .process-screen.active {
+      display: block;
+    }
+
+    .process-spinner {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 25px;
+      border: 5px solid #e2e8f0;
+      border-top-color: #4f46e5;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .process-status {
+      margin-top: 25px;
+      color: #64748b;
+      min-height: 24px;
+    }
+
+    .result-screen {
+      display: none;
+    }
+
+    .result-screen.active {
+      display: block;
+    }
+
+    .result-icon {
+      font-size: 54px;
+      margin-bottom: 15px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .confirm-card {
+        padding: 32px 20px;
+      }
+
+      .confirm-card h1 {
+        font-size: 27px;
+      }
+
+      .username-box strong {
+        font-size: 21px;
+      }
+
+      .confirm-actions {
+        flex-direction: column;
+      }
+
+      .confirm-actions a,
+      .confirm-actions button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+
+    <a class="brand" href="index.html" aria-label="IGVIO Home">
+      <span class="brand-mark">I</span>
+      <span>IGVIO</span>
+    </a>
+
+    <nav class="nav" style="display:flex" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#blog">Blog</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main>
+
+  <section class="confirm-page">
+
+    <div class="confirm-card">
+
+      <!-- CONFIRMATION -->
+      <div id="confirmScreen">
+
+        <div class="confirm-icon">?</div>
+
+        <span class="section-label">CONFIRM USERNAME</span>
+
+        <h1>Is this correct?</h1>
+
+        <p>
+          Please confirm that the Instagram username below is the one
+          you want to continue with.
+        </p>
+
+        <div class="username-box">
+          <strong id="displayUsername">@username</strong>
+          <span>Instagram username</span>
+        </div>
+
+        <div class="confirm-actions">
+
+          <a
+            href="instagram-profile-viewer.html"
+            class="back-btn">
+            ← Go Back
+          </a>
+
+          <button
+            type="button"
+            class="primary-btn"
+            id="correctButton">
+            Correct <span>→</span>
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- SIMULATED PROCESS -->
+      <div id="processScreen" class="process-screen">
+
+        <div class="process-spinner"></div>
+
+        <span class="section-label">
+          PLEASE WAIT
+        </span>
+
+        <h1>Processing Profile</h1>
+
+        <p>
+          IGVIO is processing the requested username.
+        </p>
+
+        <div
+          class="process-status"
+          id="processStatus">
+          Initializing...
+        </div>
+
+      </div>
+
+
+      <!-- RESULT -->
+      <div id="resultScreen" class="result-screen">
+
+        <div class="result-icon">✓</div>
+
+        <span class="section-label">
+          PROCESS COMPLETE
+        </span>
+
+        <h1>Processing Finished</h1>
+
+        <p>
+          The simulated profile-viewer process for
+          <strong id="resultUsername"></strong>
+          has completed.
+        </p>
+
+        <div class="confirm-actions">
+
+          <a
+            href="instagram-profile-viewer.html"
+            class="primary-btn">
+            Search Another <span>→</span>
+          </a>
+
+          <a
+            href="index.html"
+            class="back-btn">
+            Home
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const username = params.get("username");
+
+  const displayUsername =
+    document.getElementById("displayUsername");
+
+  const resultUsername =
+    document.getElementById("resultUsername");
+
+  const confirmScreen =
+    document.getElementById("confirmScreen");
+
+  const processScreen =
+    document.getElementById("processScreen");
+
+  const resultScreen =
+    document.getElementById("resultScreen");
+
+  const correctButton =
+    document.getElementById("correctButton");
+
+  const processStatus =
+    document.getElementById("processStatus");
+
+
+  // Validate username
+  if (
+    !username ||
+    !/^[A-Za-z0-9._]{1,30}$/.test(username)
+  ) {
+    window.location.href =
+      "instagram-profile-viewer.html";
+  }
+
+
+  // Display username
+  displayUsername.textContent = "@" + username;
+  resultUsername.textContent = "@" + username;
+
+
+  // Correct button
+  correctButton.addEventListener("click", function () {
+
+    confirmScreen.style.display = "none";
+    processScreen.classList.add("active");
+
+    const messages = [
+      "Preparing profile request...",
+      "Checking submitted username...",
+      "Processing available profile data...",
+      "Analyzing available information...",
+      "Finalizing the request..."
+    ];
+
+    let step = 0;
+
+    processStatus.textContent = messages[0];
+
+    const statusInterval = setInterval(function () {
+
+      step++;
+
+      if (step < messages.length) {
+        processStatus.textContent = messages[step];
+      }
+
+    }, 3000);
+
+
+    // 15-second simulated process
+    setTimeout(function () {
+
+      clearInterval(statusInterval);
+
+      processScreen.classList.remove("active");
+      resultScreen.classList.add("active");
+
+    }, 15000);
+
+  });
+</script>
+
+</body>
+</html>
