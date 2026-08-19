@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Page Not Found | IGVIO</title>
+
+  <meta name="description" content="The page you're looking for could not be found. Return to IGVIO and continue exploring Instagram profile information.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#111827">
+
+  <link rel="canonical" href="https://igvio.live/404.html">
+  <link rel="icon" type="image/png" href="/igvio.png">
+  <link rel="apple-touch-icon" href="/igvio.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+
+    <a class="brand" href="index.html" aria-label="IGVIO Home">
+      <span class="brand-mark">I</span>
+      <span>IGVIO</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#blog">Blog</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main>
+
+  <section class="hero" style="min-height:70vh;display:flex;align-items:center;">
+
+    <div class="container narrow" style="text-align:center;">
+
+      <span class="section-label">ERROR 404</span>
+
+      <h1>Page Not Found</h1>
+
+      <p
+        class="hero-text"
+        style="max-width:650px;margin:0 auto 30px;">
+        Sorry, the page you're looking for doesn't exist or may have
+        been moved. You can return to IGVIO and continue exploring.
+      </p>
+
+      <div
+        style="
+          display:flex;
+          justify-content:center;
+          gap:12px;
+          flex-wrap:wrap;
+        ">
+
+        <a href="index.html" class="primary-btn">
+          Back to Home <span>→</span>
+        </a>
+
+        <a
+          href="instagram-profile-viewer.html"
+          class="secondary-btn">
+          Instagram Viewer <span>→</span>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container footer-grid">
+
+    <div>
+      <a class="brand footer-brand" href="index.html">
+        <span class="brand-mark">I</span>
+        <span>IGVIO</span>
+      </a>
+
+      <p class="footer-text">
+        A simple Instagram profile viewer for exploring available
+        profile information and public content.
+      </p>
+    </div>
+
+    <div>
+      <h3>Explore</h3>
+      <a href="index.html">Home</a>
+      <a href="instagram-profile-viewer.html">Instagram Viewer</a>
+      <a href="index.html#blog">Blog</a>
+      <a href="index.html#faq">FAQ</a>
+    </div>
+
+    <div>
+      <h3>Legal</h3>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+  </div>
+
+  <div class="container footer-bottom">
+
+    <span>
+      © <span id="year"></span> IGVIO. All rights reserved.
+    </span>
+
+    <span>
+      IGVIO is an independent website and is not affiliated with Instagram.
+    </span>
+
+  </div>
+
+</footer>
+
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+
+  if (menuToggle && mainNav) {
+
+    menuToggle.addEventListener("click", function () {
+
+      const isOpen =
+        mainNav.classList.toggle("active");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+    });
+
+    mainNav.querySelectorAll("a").forEach(function(link) {
+
+      link.addEventListener("click", function() {
+
+        mainNav.classList.remove("active");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      });
+
+    });
+
+  }
+</script>
+
+</body>
+</html>
