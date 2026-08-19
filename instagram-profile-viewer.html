@@ -601,6 +601,25 @@
         new Date().getFullYear();
     }
   </script>
+<script>
+const form = document.getElementById("viewerForm");
+const input = document.getElementById("username");
 
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const username = input.value.trim().replace(/^@+/, "");
+
+  if (!/^[A-Za-z0-9._]{1,30}$/.test(username)) {
+    alert("Please enter a valid Instagram username.");
+    input.focus();
+    return;
+  }
+
+  // Send username to confirmation page
+  window.location.href =
+    "confirm.html?username=" + encodeURIComponent(username);
+});
+</script>
 </body>
 </html>
